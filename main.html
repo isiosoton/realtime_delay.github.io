@@ -4,10 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>都営地下鉄 遅延情報</title>
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <div></div>
+    <header>
+      <h1>都営地下鉄 遅延情報</h1>
+    </header>
+    <main>
+      <section>
+        <h2>遅延情報</h2>
+        <div id="delay-info"></div>
+        <table id="station" border="1" style="border-collapse: collapse">
+          <tr>
+            <th>駅</th>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>運行情報</h2>
+        <div id="operation-info"></div>
+      </section>
+    </main>
+    <footer>
+      <p>都営地下鉄の遅延情報を取得するWebアプリケーション</p>
+    </footer>
   </body>
   <script type="text/javascript" src="./js/main.js"></script>
   <script type="text/javascript" src="./js/getapi.js"></script>
+  <script type="text/javascript" src="./js/pushhtml.js"></script>
 </html>

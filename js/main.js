@@ -15,12 +15,11 @@ const getLocation = async () => {
     // station_list.push(dict_data["odpt:toStation"]);
   });
   const station_str = station_list.join(",");
-  //   console.log(station_str);
   const station_api_url = `${station_url}&owl:sameAs=${station_str}`;
   console.log(station_api_url);
   const station_json_data = await getapi(station_api_url);
-  console.log(station_json_data);
   station_json_data.forEach((dict_data) => {
     console.log(dict_data["dc:title"]);
   });
+  modifyHTML(station_json_data);
 };
