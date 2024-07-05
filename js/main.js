@@ -19,23 +19,19 @@ const getLocation = async () => {
   });
   // station_listの重複を消す
   station_list = Array.from(new Set(station_list));
-  console.log(station_list);
+  // 漢字での駅名を取得する
   const station_str = station_list.join(",");
   const station_api_url = `${station_url}&owl:sameAs=${station_str}`;
+  console.log(station_api_url);
   const station_json_data = await getapi(station_api_url);
   // console.log(station_json_data);
   location_json_data_edit.forEach((dict_data) => {
     from_station_data = station_json_data.find((station) => station["owl:sameAs"] === dict_data["odpt:fromStation"]);
     to_station_data = station_json_data.find((station) => station["owl:sameAs"] === dict_data["odpt:toStation"]);
     dict_data["odpt:fromStation"] = from_station_data == null ? null : from_station_data["dc:title"];
-    dict_data["odpt:toStation"] = to_station_data == null ? null : to_station_data["dc:title"];
+    dict_data["odpt:toStation"] = to_station_data == null ? "停止中" : to_station_data["dc:title"];
     // dict_data["odpt:toStation"] = station_json_data.find((station) => station["owl:sameAs"] === dict_data["odpt:toStation"])["dc:title"];
   });
+  console.log(location_json_data_edit);
   modifyHTML(location_json_data_edit);
-  // console.log(location_json_data_edit);
-
-  // station_json_data.forEach((dict_data) => {
-  //   console.log(dict_data["dc:title"]);
-  // });
-  // modifyHTML(station_json_data);
 };
