@@ -6,10 +6,13 @@ function modifyHTML(data) {
     const tr = document.createElement("tr");
     const td1 = document.createElement("td");
     const td2 = document.createElement("td");
-    tr.appendChild(td1);
-    tr.appendChild(td2);
+    const td3 = document.createElement("td");
     td1.textContent = dict_data["odpt:fromStation"];
     td2.textContent = dict_data["odpt:toStation"];
+    td3.textContent = dict_data["odpt:delay"];
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
     element.appendChild(tr);
   });
 }

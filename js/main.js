@@ -1,10 +1,29 @@
 // ロケーション情報を取得する
-const location_url = "https://api-public.odpt.org/api/v4/odpt:Train?odpt:operator=odpt.Operator:Toei&odpt:railway=odpt.Railway:Toei.Asakusa";
+const route_type = "Toei.Mita";
+
+const location_url = `https://api-public.odpt.org/api/v4/odpt:Train?odpt:operator=odpt.Operator:Toei&odpt:railway=odpt.Railway:${route_type}`;
+// const location_url = "https://api-public.odpt.org/api/v4/odpt:Train?odpt:operator=odpt.Operator:Toei&odpt:railway=odpt.Railway:Toei.Asakusa";
 const station_url = "https://api-public.odpt.org/api/v4/odpt:Station?odpt:operator=odpt.Operator:Toei";
 
 document.addEventListener("DOMContentLoaded", () => {
+  make_list();
   getLocation();
 });
+
+const make_list = () => {
+  const route_type_json = {
+    三田線: "Toei.Mita",
+    浅草線: "Toei.Asakusa",
+    新宿線: "Toei.Shinjuku",
+    大江戸線: "Toei.Oedo",
+    荒川線: "Toei.Arakawa",
+    "日暮里・舎人ライナー": "Toei.NipporiToneri",
+  };
+  const route_type_list = Object.keys(route_type_json);
+  console.log(route_type_list);
+  console.log(route_type_json);
+  // const element = document.getElementById("route_type");
+};
 
 // ロケーション情報を取得する
 const getLocation = async () => {
